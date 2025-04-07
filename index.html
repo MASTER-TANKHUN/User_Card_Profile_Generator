@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Card Profile Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>User Card Profile Generator</h1>
+        <p class="subtitle">Create beautiful profile cards for your website or application</p>
+    </header>
+    
+    <div class="container">
+        <div class="content">
+            <div class="form-container">
+                <h2>Card Information</h2>
+                <div class="templates">
+                    <div class="template active" data-template="basic">
+                        <div style="height: 50px; background: #3498db;"></div>
+                        <div class="template-label">Basic</div>
+                    </div>
+                    <div class="template" data-template="gradient">
+                        <div style="height: 50px; background: linear-gradient(to right, #3498db, #2ecc71);"></div>
+                        <div class="template-label">Gradient</div>
+                    </div>
+                    <div class="template" data-template="dark">
+                        <div style="height: 50px; background: #333;"></div>
+                        <div class="template-label">Dark</div>
+                    </div>
+                    <div class="template" data-template="minimal">
+                        <div style="height: 50px; background: #f5f5f5; border: 1px solid #ddd;"></div>
+                        <div class="template-label">Minimal</div>
+                    </div>
+                </div>
+                
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="John Doe" value="MASTER T">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="title">Professional Title</label>
+                        <input type="text" id="title" placeholder="Software Developer" value="Full-Stack">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bio">Bio</label>
+                        <textarea id="bio" rows="3" placeholder="A short description about yourself">Passionate about building websites, with over 3 years of experience in developing user-centered web applications.</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profileImage">Profile Image URL</label>
+                        <input type="text" id="profileImage" placeholder="https://example.com/image.jpg">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Stats (optional)</label>
+                        <div style="display: flex; gap: 1rem; margin-bottom: 0.5rem;">
+                            <input type="text" id="stat1Label" placeholder="Label 1" value="Projects">
+                            <input type="number" id="stat1Value" placeholder="Value" value="24">
+                        </div>
+                        <div style="display: flex; gap: 1rem; margin-bottom: 0.5rem;">
+                            <input type="text" id="stat2Label" placeholder="Label 2" value="Clients">
+                            <input type="number" id="stat2Value" placeholder="Value" value="18">
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <input type="text" id="stat3Label" placeholder="Label 3" value="Reviews">
+                            <input type="number" id="stat3Value" placeholder="Value" value="42">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Social Media (optional)</label>
+                        <div style="display: flex; gap: 1rem; margin-bottom: 0.5rem;">
+                            <select id="social1Type">
+                                <option value="twitter">Twitter</option>
+                                <option value="linkedin" selected>LinkedIn</option>
+                                <option value="github">GitHub</option>
+                                <option value="instagram">Instagram</option>
+                                <option value="facebook">Facebook</option>
+                            </select>
+                            <input type="text" id="social1Url" placeholder="URL" value="https://linkedin.com">
+                        </div>
+                        <div style="display: flex; gap: 1rem; margin-bottom: 0.5rem;">
+                            <select id="social2Type">
+                                <option value="twitter" selected>Twitter</option>
+                                <option value="linkedin">LinkedIn</option>
+                                <option value="github">GitHub</option>
+                                <option value="instagram">Instagram</option>
+                                <option value="facebook">Facebook</option>
+                            </select>
+                            <input type="text" id="social2Url" placeholder="URL" value="https://twitter.com">
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <select id="social3Type">
+                                <option value="twitter">Twitter</option>
+                                <option value="linkedin">LinkedIn</option>
+                                <option value="github">GitHub</option>
+                                <option value="instagram" selected>Instagram</option>
+                                <option value="facebook">Facebook</option>
+                            </select>
+                            <input type="text" id="social3Url" placeholder="URL" value="https://instagram.com">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Card Colors</label>
+                        <div class="color-inputs">
+                            <div class="color-input">
+                                <label for="headerColor">Header</label>
+                                <input type="color" id="headerColor" value="#3498db">
+                            </div>
+                            <div class="color-input">
+                                <label for="nameColor">Name</label>
+                                <input type="color" id="nameColor" value="#333333">
+                            </div>
+                            <div class="color-input">
+                                <label for="socialColor">Social</label>
+                                <input type="color" id="socialColor" value="#3498db">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button type="button" id="updateCard">Update Card</button>
+                        <button type="button" id="resetForm" class="danger-button">Reset</button>
+                        <button type="button" id="randomize" class="secondary-button">Randomize</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="preview-container">
+                <h2>Card Preview</h2>
+                <div class="card" id="cardPreview">
+                    <div class="card-header" style="background-color: #3498db;">
+                        <div class="card-img" id="previewImg">
+                            <span>SJ</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-name" id="previewName">MASTER T</h3>
+                        <div class="card-title" id="previewTitle">Full-stack</div>
+                        <p class="card-bio" id="previewBio">Passionate about building websites, with over 3 years of experience in developing user-centered web applications.</p>
+                        
+                        <div class="card-stats">
+                            <div class="stat">
+                                <div class="stat-value" id="previewStat1Value">24</div>
+                                <div class="stat-label" id="previewStat1Label">Projects</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value" id="previewStat2Value">18</div>
+                                <div class="stat-label" id="previewStat2Label">Clients</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value" id="previewStat3Value">42</div>
+                                <div class="stat-label" id="previewStat3Label">Reviews</div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-social">
+                            <div class="social-icon" style="background-color: #3498db;" id="previewSocial1">in</div>
+                            <div class="social-icon" style="background-color: #3498db;" id="previewSocial2">tw</div>
+                            <div class="social-icon" style="background-color: #3498db;" id="previewSocial3">ig</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 2rem;">
+                    <button id="downloadHTML" class="secondary-button">Download HTML</button>
+                </div>
+                
+                <div class="code-container">
+                    <div class="code-header">
+                        <h3>HTML Code</h3>
+                        <button id="copyCode">Copy Code</button>
+                    </div>
+                    <div class="code-content" id="codeOutput">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>User Card Profile Generator © 2077 | Create beautiful profile cards in seconds by <a href="https://github.com/MASTER-TANKHUN" target="_blank">MASTER-TANKHUN</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
